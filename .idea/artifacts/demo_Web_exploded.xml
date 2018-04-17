@@ -2,12 +2,12 @@
   <artifact type="exploded-war" name="demo:Web exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/demo_Web_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="demo/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="demo" />
           <element id="module-output" name="demo2" />
           <element id="module-output" name="test01-hello" />
+          <element id="module-output" name="angular-test01" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.0.1.RELEASE" />
@@ -48,8 +48,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.0.5.RELEASE" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="demo2/web/Web" />
       <element id="javaee-facet-resources" facet="test01-hello/web/Web" />
+      <element id="javaee-facet-resources" facet="angular-test01/web/Web" />
     </root>
   </artifact>
 </component>
