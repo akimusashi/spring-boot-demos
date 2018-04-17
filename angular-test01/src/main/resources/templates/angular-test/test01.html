@@ -5,10 +5,15 @@
     <title>Angular Test</title>
 
     <script type="text/javascript" src="../../static/angular-1.5.0/angular.min.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
 </head>
 <body>
-<div>
-    <h1></h1>
+<div ng-app="myApp" ng-init="myName='关羽'">
+    <p>输入：<input type="text" ng-model="myName" title="name"></p>
+    <h1><span style="color: #ff0094;font-family: 华文行楷,sans-serif">------{{myName}}------</span></h1>
 </div>
 </body>
 </html>
