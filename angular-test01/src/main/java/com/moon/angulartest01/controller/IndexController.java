@@ -31,4 +31,14 @@ public class IndexController {
     public String serviceTest() {
         return "angular-test/service-test";
     }
+
+    @RequestMapping("/http-test")
+    public String httpTest() {
+        return "angular-test/http-test";
+    }
+
+    @RequestMapping("/select-test")
+    public String selectTest() {
+        return "angular-test/select-test";
+    }
 }

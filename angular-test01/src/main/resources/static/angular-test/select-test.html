@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Test</title>
+
+    <script type="text/javascript" src="../angular-1.5.0/angular.min.js"></script>
+</head>
+<body>
+<div data-ng-app="myApp">
+    <div data-ng-controller="myCtrl">
+        <select title="name" data-ng-options="x.name group by x.country for x in names"
+                data-ng-model="selectedName"></select>
+        <div style="border: 1px solid #ff00f1">
+            <h2><span style="color: #003bff">{{selectedName.name+'--'+selectedName.country}}</span></h2>
+        </div>
+        <select title="car" data-ng-options="y.brand for (x,y) in cars" data-ng-model="selectedCar"></select>
+        <div style="border: 1px solid #ff3e00">
+            <h2><span style="color: #ff00da">品牌：{{selectedCar.brand}}</span></h2>
+            <h2><span style="color: #ff00da">模型：{{selectedCar.model}}</span></h2>
+            <h2><span style="color: #ff00da">颜色：<span
+                    style="background: {{selectedCar.color}};width: 66px;height:31px;display: inline-block;vertical-align: bottom"></span></span>
+            </h2>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.names = [
+            {name: '关羽', country: '蜀'},
+            {name: '周瑜', country: '吴'},
+            {name: '陈泰', country: '魏'},
+            {name: '孙权', country: '吴'},
+            {name: '张辽', country: '魏'},
+            {name: '孙策', country: '吴'},
+            {name: '贾诩', country: '魏'},
+            {name: '张昭', country: '吴'},
+            {name: '钟繇', country: '魏'},
+            {name: '陆逊', country: '吴'},
+            {name: '刘晔', country: '魏'},
+            {name: '赵累', country: '蜀'},
+            {name: '张翼', country: '蜀'},
+            {name: '魏延', country: '蜀'},
+            {name: '赵云', country: '蜀'},
+            {name: 'Augustus', country: 'Rome'},
+            {name: 'Caesar', country: 'Rome'},
+            {name: 'Constantine', country: 'Rome'},
+            {name: 'Charles', country: 'Rome'},
+            {name: 'Marcus', country: 'Rome'}
+        ];
+        $scope.selectedName = $scope.names[0];
+        $scope.cars = {
+            car01: {brand: "Ford", model: "Mustang", color: "#ff9a00"},
+            car02: {brand: "Fiat", model: "500", color: "#0098ff"},
+            car03: {brand: "Volvo", model: "XC90", color: "#00ff26"}
+        };
+        $scope.selectedCar = $scope.cars['car01'];
+    });
+</script>
+</body>
+</html>
