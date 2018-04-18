@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controller Test</title>
+
+    <script type="text/javascript" src="../angular-1.5.0/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="myCtrl">
+        名: <input type="text" ng-model="firstName" title="firstName"><br>
+        姓: <input type="text" ng-model="lastName" title="lastName">
+        <h2><span style="color: #00c5ff">姓名：{{fullName()}}</span></h2>
+    </div>
+    <div ng-controller="myCtrl2">
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.firstName = "羽";
+        $scope.lastName = "关";
+        $scope.fullName = function () {
+            return $scope.lastName + " " + $scope.firstName;
+        }
+    });
+    app.controller('myCtrl2', function ($scope) {
+        $scope.names = [
+            {name: '关羽', country: '蜀'},
+            {name: '周瑜', country: '吴'},
+            {name: '陈泰', country: '魏'}
+        ];
+    });
+</script>
+</body>
+</html>

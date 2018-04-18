@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Test</title>
+
+    <script type="text/javascript" src="../angular-1.5.0/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="myCtrl">
+        输入: <input type="text" ng-model="lastName" title="lastName">
+        <h2><span style="color: #00ff7f">姓名（大写）：{{lastName|uppercase}}</span></h2>
+        <h2><span style="color: #ff0066">姓名（小写）：{{lastName|lowercase}}</span></h2>
+        <input type="number" ng-model="quantity" title="quantity">
+        <input type="number" ng-model="price" title="price">
+        <h2>
+            <span style="color: #ff6600">总价：{{quantity}} * {{price|currency:'￥'}} = {{(quantity*price)|currency:'￥'}}</span>
+        </h2>
+    </div>
+    <div ng-controller="myCtrl2">
+        过滤: <input type="text" ng-model="filterText" title="filterText">
+        <ul>
+            <li ng-repeat="x in names|filter:filterText|orderBy:'-country'">
+                <span style="color: #7800ff">{{(x.name|reverse) + ', ' + x.country }}</span>
+            </li>
+        </ul>
+        时间：<input type="number" ng-model="myTime" title="myTime">
+        <h2><span style="color: #e6ff00">{{myTime|date:"yyyy-MM-dd HH:mm:ss"}}</span></h2>
+    </div>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.lastName = 'TomCat';
+        $scope.quantity = 6;
+        $scope.price = 8;
+    });
+    app.controller('myCtrl2', function ($scope) {
+        $scope.names = [
+            {name: '关羽', country: '蜀'},
+            {name: '周瑜', country: '吴'},
+            {name: '陈泰', country: '魏'},
+            {name: '孙权', country: '吴'},
+            {name: '张辽', country: '魏'},
+            {name: '孙策', country: '吴'},
+            {name: '贾诩', country: '魏'},
+            {name: '张昭', country: '吴'},
+            {name: '钟繇', country: '魏'},
+            {name: '陆逊', country: '吴'},
+            {name: '刘晔', country: '魏'},
+            {name: '赵累', country: '蜀'},
+            {name: '张翼', country: '蜀'},
+            {name: '魏延', country: '蜀'},
+            {name: '赵云', country: '蜀'},
+            {name: 'Augustus', country: 'Rome'},
+            {name: 'Caesar', country: 'Rome'},
+            {name: 'Constantine', country: 'Rome'},
+            {name: 'Charles', country: 'Rome'},
+            {name: 'Marcus', country: 'Rome'}
+        ];
+        $scope.filterText = '蜀';
+        $scope.myTime = 123456789;
+    });
+    app.filter('reverse', function () {
+        return function (text) {
+            return text.split('').reverse().join('');
+        }
+    });
+</script>
+</body>
+</html>

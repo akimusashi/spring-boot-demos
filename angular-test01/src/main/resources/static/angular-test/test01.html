@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Test</title>
+
+    <script type="text/javascript" src="../jquery-2.1.4/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../angular-1.5.0/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-init="myName='关羽'" ng-controller="myCtrl">
+    <p>输入：<input type="text" ng-model="myName" title="name"></p>
+    <h1><span style="color: #ff0094;font-family: 华文行楷,sans-serif">------{{myName}}------</span></h1>
+    <input ng-model="numberOne" title="numberOne">&nbsp;<input ng-model="numberTwo" title="numberTwo">
+    <h1><span style="color: #0f00ff">{{numberOne}}*{{numberTwo}}={{numberOne*numberTwo}}</span></h1>
+    <h4><span style="color: #ff6d00">姓名：{{soldier.name}}</span></h4>
+    <h4><span style="color: #ff6d00">性别：{{soldier.sex}}</span></h4>
+    <h4><span style="color: #ff6d00">国家：{{soldier.country}}</span></h4>
+    <h4><span style="color: #ff6d00">年龄：{{soldier.age}}</span></h4>
+    <table border="1px solid black" cellspacing="0">
+        <tr>
+            <td ng-repeat="fruit in fruits">
+                {{fruit}}&nbsp;{{publicName}}
+            </td>
+        </tr>
+    </table>
+    <form name="myForm">
+        <input name="myAddress" type="email" title="email" ng-model="myEmail">
+        <br>
+        {{myForm.myAddress}}
+        <br>
+        {{myForm.myAddress.$valid}}
+        {{myForm.myAddress.$dirty}}
+        {{myForm.myAddress.$touched}}
+    </form>
+    <h2><span style="color: #00c5ff">{{myWorld}}</span></h2>
+    <p>
+        <button ng-click="sayHello()">CLICK</button>
+    </p>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $rootScope) {
+        $scope.myName = '张飞';
+        $scope.numberOne = 66;
+        $scope.numberTwo = 88;
+        $scope.soldier = {
+            name: 'Caesar',
+            sex: 'male',
+            country: 'Rome',
+            age: 36
+        };
+        $scope.fruits = ['Apple', 'Peach', 'Banana'];
+        $rootScope.publicName = 'Fruit';
+        $scope.sayHello = function () {
+            $scope.myWorld = 'Hello ' + $scope.myName + '!';
+        };
+    });
+</script>
+</body>
+</html>
