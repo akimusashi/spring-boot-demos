@@ -61,4 +61,9 @@ public class IndexController {
     public String validateTest() {
         return "angular-test/validate-test";
     }
+
+    @RequestMapping("/DI-test")
+    public String DITest() {
+        return "angular-test/DI-test";
+    }
 }
