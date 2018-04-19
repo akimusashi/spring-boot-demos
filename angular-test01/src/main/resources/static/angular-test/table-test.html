@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Test</title>
+
+    <script type="text/javascript" src="../angular-1.5.0/angular.min.js"></script>
+
+    <style>
+        table, th, td {
+            border-collapse: collapse;
+            padding: 6px;
+        }
+
+        table {
+            border: 1px solid #ff5200;
+        }
+
+        th, td {
+            border: 1px dotted #ff5200;
+            width: 148px;
+            text-align: center;
+        }
+
+        table tr:nth-child(1) {
+            background-color: #ffa781;
+        }
+
+        table tr:nth-child(2n+3) {
+            background-color: #ffcdca;
+        }
+
+        table tr:nth-child(2n+2) {
+            background-color: #ffe1e1;
+        }
+    </style>
+</head>
+<body>
+<div data-ng-app="myApp">
+    <div data-ng-controller="myCtrl" align="center">
+        <h1><span style="color: #ff0017;font-family: 华文隶书,sans-serif">人&nbsp;物&nbsp;志</span></h1>
+        <table>
+            <tr>
+                <th><span style="color: #ff0049">序号</span></th>
+                <th><span style="color: #ff4e00">ID</span></th>
+                <th><span style="color: #ff00ba">姓名</span></th>
+                <th><span style="color: #50ff00">性别</span></th>
+                <th><span style="color: #009dff">年龄</span></th>
+            </tr>
+            <tr data-ng-repeat="x in users|orderBy:'-age'">
+                <td><span style="color: #ff0049">{{$index+1}}</span></td>
+                <td><span style="color: #ff4e00">{{x.id}}</span></td>
+                <td><span style="color: #ff00ba">{{x.name}}</span></td>
+                <td><span style="color: #50ff00">{{x.sex}}</span></td>
+                <td><span style="color: #009dff">{{x.age}}</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $http) {
+        $http.get('/user/find-all').then(function (response) {
+            $scope.users = response.data;
+        });
+    });
+</script>
+</body>
+</html>

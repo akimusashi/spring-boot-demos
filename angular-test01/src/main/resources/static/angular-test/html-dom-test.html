@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML DOM Test</title>
+
+    <script type="text/javascript" src="../angular-1.5.0/angular.min.js"></script>
+</head>
+<body>
+<div data-ng-app="myApp">
+    <div data-ng-controller="myCtrl">
+        <button data-ng-disabled="!mySwitch">CLICK</button>
+        <br>
+        <input type="checkbox" ng-model="mySwitch" title="change">
+        <br>
+        <h2><span style="color: #ff4100">{{mySwitch}}</span></h2>
+        <h2 ng-show="mySwitch"><span style="color: #ff00d8">天下統一の夢</span></h2>
+        <h2 ng-hide="mySwitch"><span style="color: #00ff4d">天下統一の夢</span></h2>
+    </div>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $interval) {
+        $scope.mySwitch = true;
+        $interval(function () {
+            $scope.mySwitch = new Date().getSeconds() % 2 === 0;
+        }, 1000);
+    });
+</script>
+</body>
+</html>

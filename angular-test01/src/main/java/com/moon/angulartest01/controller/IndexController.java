@@ -41,4 +41,24 @@ public class IndexController {
     public String selectTest() {
         return "angular-test/select-test";
     }
+
+    @RequestMapping("/table-test")
+    public String tableTest() {
+        return "angular-test/table-test";
+    }
+
+    @RequestMapping("/html-dom-test")
+    public String HTMLDOMTest() {
+        return "angular-test/html-dom-test";
+    }
+
+    @RequestMapping("/event-test")
+    public String eventTest() {
+        return "angular-test/event-test";
+    }
+
+    @RequestMapping("/validate-test")
+    public String validateTest() {
+        return "angular-test/validate-test";
+    }
 }
