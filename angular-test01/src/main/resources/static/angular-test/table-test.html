@@ -37,7 +37,8 @@
 </head>
 <body>
 <div data-ng-app="myApp">
-    <div data-ng-controller="myCtrl" align="center">
+    <!--<div data-ng-controller="tableCtrl" align="center">-->
+    <div align="center">
         <h1><span style="color: #ff0017;font-family: 华文隶书,sans-serif">人&nbsp;物&nbsp;志</span></h1>
         <table>
             <tr>
@@ -59,11 +60,11 @@
 </div>
 <script type="text/javascript">
     var app = angular.module('myApp', []);
-    app.controller('myCtrl', function ($scope, $http) {
+    /*app.controller('tableCtrl', function ($scope, $http) {
         $http.get('/user/find-all').then(function (response) {
             $scope.users = response.data;
         });
-    });
+    });*/
 </script>
 </body>
 </html>

@@ -66,4 +66,9 @@ public class IndexController {
     public String DITest() {
         return "angular-test/DI-test";
     }
+
+    @RequestMapping("/route-test")
+    public String routeTest() {
+        return "angular-test/route-test";
+    }
 }

@@ -7,6 +7,47 @@
     <script type="text/javascript" src="../angular-1.5.0/angular.min.js"></script>
 </head>
 <body>
+<div data-ng-app="myApp">
+    <div data-ng-controller="myCtrl">
+        <p>
+            <input type="number" ng-model="number" title="number">
+        </p>
+        <p>
+            <button ng-click="square()">X<sup>2</sup></button>
+        </p>
+        <h2>
+            <span style="color: #ff4100">RESULT: {{result}}</span>
+        </h2>
+    </div>
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
 
+    app.value('defaultInput', 5);
+
+    app.factory('MathService', function () {
+        var factory = {};
+
+        factory.multiply = function (a, b) {
+            return a * b;
+        };
+
+        return factory;
+    });
+
+    app.service('CalcService', function (MathService) {
+        this.square = function (a) {
+            return MathService.multiply(a, a);
+        };
+    });
+
+    app.controller('myCtrl', function ($scope, CalcService, defaultInput) {
+        $scope.number = defaultInput;
+        $scope.result = CalcService.square($scope.number);
+        $scope.square = function () {
+            $scope.result = CalcService.square($scope.number);
+        }
+    });
+</script>
 </body>
 </html>
